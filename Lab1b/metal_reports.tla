@@ -1,8 +1,4 @@
 ---- MODULE metal_reports ----
-\* Simplified metal reports workflow.
-\* Each user may create, amend, submit, and have approved/rejected a single report.
-\* Simplification of Lab1a: dropped per-metal dimension and record-valued reports
-\* in favour of separate variables for status and quantity.
 EXTENDS Naturals
 
 CONSTANTS Users, MaxQty, MaxTotalQty
@@ -65,4 +61,10 @@ TypeOK ==
 QtyPositive ==
     \A u \in Users : reportStatus[u] # "NONE" => reportQty[u] >= 1
 
+StaysApprovedOrRejected ==
+    \A u \in Users :
+        reportStatus[u] \in {"APPROVED", "REJECTED"} =>
+            reportStatus'[u] = reportStatus[u]
+
+P_StaysApprovedOrRejected == [][StaysApprovedOrRejected]_vars
 ====

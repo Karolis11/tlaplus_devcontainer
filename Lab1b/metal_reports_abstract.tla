@@ -1,7 +1,4 @@
 ---- MODULE metal_reports_abstract ----
-\* Abstract lifecycle model of the metal reports workflow.
-\* Each user's report lifecycle: none -> active -> decided.
-\* Abstracts away quantity, draft/submit distinction, and approve vs reject.
 CONSTANTS Users
 
 VARIABLES reportLifecycle
